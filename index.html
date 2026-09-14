@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PXLD MEDIA · Event Marketing Agency</title>
+<meta name="description" content="Event marketing that sells tickets. Paid social, tracking and campaign builds for promoters, venues and festivals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1faee; --surface:#e4efe1; --surface-2:#d8e6d4;
+  --ink:#123d3b; --muted:#5f7c76; --dim:#a8bfb8;
+  --brand:#005f73; --brand-deep:#0b3f4a; --spark:#ffd84f;
+  --line:rgba(18,61,59,.16); --line-strong:rgba(18,61,59,.3);
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)} a:hover{color:var(--brand-deep)}
+img{max-width:100%;display:block}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.eyebrow b{color:var(--brand);font-weight:500}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h1{font-size:clamp(46px,7.4vw,112px);line-height:.92}
+h2{font-size:clamp(36px,5vw,68px);line-height:.98}
+h3{font-size:clamp(26px,2.6vw,34px);line-height:1.05}
+h1 em,h2 em,h3 em{color:var(--brand)}
+.lede{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:640px;text-wrap:pretty}
+.lede strong{color:var(--ink);font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-weight:500;font-size:16px;text-decoration:none;padding:17px 26px;border-radius:2px;background:var(--brand);color:#f1faee;border:0;cursor:pointer;box-shadow:4px 4px 0 var(--spark);transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{color:#f1faee;transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--spark)}
+.btn svg{width:18px;height:18px}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:none;border:1px solid var(--line-strong)}
+.btn-ghost:hover{color:var(--ink);box-shadow:none;background:var(--surface)}
+
+/* header */
+header.site{position:sticky;top:0;z-index:20;background:rgba(241,250,238,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:74px}
+.logo img{height:26px;width:auto}
+nav.main{display:flex;gap:34px;align-items:center}
+nav.main a{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding-block:6px;border-bottom:1px solid transparent}
+nav.main a:hover,nav.main a.on{color:var(--ink);border-color:var(--ink)}
+nav.main .btn{padding:11px 18px;font-size:14px;font-family:var(--sans);letter-spacing:0;text-transform:none;color:#f1faee;border:0;box-shadow:3px 3px 0 var(--spark)}
+.menu-toggle{display:none;background:none;border:1px solid var(--line-strong);border-radius:2px;width:44px;height:44px;align-items:center;justify-content:center;color:var(--ink)}
+@media (max-width:860px){
+  nav.main{display:none;position:absolute;top:74px;left:0;right:0;background:var(--bg);flex-direction:column;align-items:stretch;gap:0;padding:8px var(--pad) 24px;border-bottom:1px solid var(--line)}
+  nav.main.open{display:flex}
+  nav.main a{padding-block:16px;border-bottom:1px solid var(--line)}
+  nav.main .btn{margin-top:18px;justify-content:center}
+  .menu-toggle{display:inline-flex}
+}
+
+/* pages */
+.page{display:none}
+.page.on{display:block;animation:rise .5s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+section{padding-block:clamp(64px,9vw,128px)}
+section + section{border-top:1px solid var(--line)}
+.hero{padding-block:clamp(56px,8vw,112px) clamp(48px,6vw,88px)}
+.hero h1{margin-top:28px;max-width:1100px}
+.hero .lede{margin-top:32px}
+.hero .actions{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+.hero-meta{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line-strong)}
+.hero-meta > div{padding:22px 24px;border-right:1px solid var(--line)}
+.hero-meta > div:last-child{border-right:0}
+.kpi{font-family:var(--sans);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.035em;line-height:1}
+.kpi.win{color:var(--brand)}
+.kpi-label{margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:760px){.hero-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-meta > div:nth-child(2){border-right:0}.hero-meta > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.sec-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);gap:40px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head .eyebrow{margin-bottom:20px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:20px}}
+
+/* pains */
+.pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line-strong)}
+.pain{padding:32px 28px 36px 0;border-bottom:1px solid var(--line)}
+.pain + .pain{padding-left:28px;border-left:1px solid var(--line)}
+.pain:nth-child(3n+1){padding-left:0;border-left:0}
+.pain q{font-family:var(--serif);font-style:italic;font-size:27px;line-height:1.1;display:block;quotes:none}
+.pain p{margin:16px 0 0;color:var(--muted);font-size:16px}
+@media (max-width:860px){.pains{grid-template-columns:1fr}.pain,.pain + .pain{padding:28px 0;border-left:0}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.svc{background:var(--surface);border:1px solid var(--line);padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.svc .num{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--brand)}
+.svc p{margin:0;color:var(--muted)}
+.svc ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:18px}
+.svc li{display:flex;gap:12px;font-size:15.5px}
+.svc li svg{flex:none;width:18px;height:18px;margin-top:3px;color:var(--brand)}
+.svc.feature{background:var(--brand-deep);color:#e9f5e6;border-color:var(--brand-deep)}
+.svc.feature h3 em{color:var(--spark)}
+.svc.feature p{color:#a9c6c0}
+.svc.feature .num{color:var(--spark)}
+.svc.feature ul{border-color:rgba(233,245,230,.18)}
+.svc.feature li svg{color:var(--spark)}
+@media (max-width:860px){.services{grid-template-columns:1fr}}
+
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.who h4{font-family:var(--sans);font-weight:500;font-size:19px;margin:0 0 10px}
+.who p{margin:0;color:var(--muted);font-size:16px}
+@media (max-width:760px){.who{grid-template-columns:1fr;gap:28px}}
+
+.stack{display:flex;flex-wrap:wrap;gap:10px 10px;margin-top:14px}
+.chip-static{font-size:14.5px;border:1px solid var(--line-strong);padding:8px 14px;border-radius:999px}
+
+/* cta band */
+.cta-band{background:var(--brand-deep);color:#e9f5e6;border-top:0}
+.cta-band .wrap{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:48px;align-items:end}
+.cta-band h2 em{color:var(--spark)}
+.cta-band p{color:#a9c6c0;margin:0 0 28px}
+.cta-band .eyebrow{color:#a9c6c0}
+.cta-band .eyebrow b{color:var(--spark)}
+.cta-band .btn{background:var(--spark);color:var(--brand-deep);box-shadow:4px 4px 0 #f1faee}
+.cta-band .btn:hover{color:var(--brand-deep);box-shadow:6px 6px 0 #f1faee}
+@media (max-width:860px){.cta-band .wrap{grid-template-columns:1fr}}
+
+/* approach */
+.steps{counter-reset:s;display:flex;flex-direction:column;border-top:1px solid var(--line-strong)}
+.step{display:grid;grid-template-columns:120px minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding-block:40px;border-bottom:1px solid var(--line)}
+.step .n{font-family:var(--serif);font-size:64px;line-height:.8;color:var(--brand)}
+.step .when{font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.step p{margin:0;color:var(--muted)}
+.step p strong{color:var(--ink);font-weight:500}
+.proof{border-left:2px solid var(--spark);padding-left:18px}
+.proof .kpi{font-size:30px}
+.proof small{display:block;margin-top:8px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--muted)}
+@media (max-width:980px){.step{grid-template-columns:64px minmax(0,1fr);gap:16px 20px}.step .n{font-size:44px;grid-row:span 3}}
+
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line-strong)}
+.rule{padding:30px 32px;border-bottom:1px solid var(--line)}
+.rule:nth-child(odd){border-right:1px solid var(--line)}
+.rule:nth-last-child(-n+2){border-bottom:0}
+.rule .bad{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(18,61,59,.35)}
+.rule .good{font-family:var(--serif);font-size:28px;line-height:1.1;margin-top:10px}
+.rule p{margin:12px 0 0;color:var(--muted);font-size:15.5px}
+@media (max-width:760px){.rules{grid-template-columns:1fr}.rule:nth-child(odd){border-right:0}.rule:nth-last-child(2){border-bottom:1px solid var(--line)}}
+
+/* work */
+.totals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line-strong)}
+.totals > div{padding:26px 26px;border-right:1px solid var(--line)}
+.totals > div:last-child{border-right:0}
+@media (max-width:760px){.totals{grid-template-columns:repeat(2,minmax(0,1fr))}.totals > div:nth-child(2){border-right:0}.totals > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-block:48px 28px}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.case{background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column}
+.case[hidden]{display:none}
+.case-head{background:var(--brand-deep);color:#e9f5e6;padding:14px 22px;display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase}
+.case-head span:last-child{color:var(--spark)}
+.case-body{padding:28px 26px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.case-body h3{font-size:30px}
+.case-body p{margin:0;color:var(--muted);font-size:15.5px}
+.case-body p b{color:var(--ink);font-weight:500}
+.case-kpis{margin-top:auto;padding-top:20px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.case-kpis .kpi{font-size:24px}
+.case-kpis .kpi-label{font-size:10px;margin-top:6px}
+.case.lead{grid-column:1 / -1;border:1.5px solid var(--brand)}
+.case.lead .case-body{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:20px 48px}
+.case.lead .big{font-family:var(--serif);font-size:clamp(64px,8vw,112px);line-height:.85;color:var(--brand);letter-spacing:-.03em}
+.case.lead .case-kpis{grid-column:1 / -1}
+@media (max-width:860px){.cases{grid-template-columns:1fr}.case.lead .case-body{grid-template-columns:1fr}.case-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.note{margin-top:28px;font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--muted);max-width:900px}
+
+/* audit */
+.audit{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:start}
+.audit-intro{position:sticky;top:120px}
+.audit-intro h1{font-size:clamp(48px,6vw,88px);margin-top:26px}
+.audit-intro .lede{margin-top:26px}
+.gets{margin-top:40px;border-top:1px solid var(--line-strong)}
+.gets div{display:flex;gap:16px;padding-block:16px;border-bottom:1px solid var(--line);font-size:15.5px}
+.gets span{font-family:var(--mono);font-size:12px;color:var(--brand);padding-top:3px;min-width:22px}
+@media (max-width:980px){.audit{grid-template-columns:1fr}.audit-intro{position:static}}
+
+form.audit-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 36px}
+.field{display:flex;flex-direction:column;gap:14px;min-width:0}
+.field.full{grid-column:1 / -1}
+.field > label,.field > .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.req{color:var(--brand)}
+.field input[type=text],.field input[type=email],.field input[type=url],.field textarea{font:inherit;font-size:18px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line-strong);padding:8px 0 14px;border-radius:0;width:100%}
+.field textarea{resize:vertical;min-height:96px;line-height:1.5}
+.field input::placeholder,.field textarea::placeholder{color:var(--dim)}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--brand);box-shadow:0 1px 0 var(--brand)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 17px;border:1px solid var(--line-strong);border-radius:999px;font-size:15.5px;transition:background .15s,border-color .15s,color .15s;user-select:none}
+.chip:hover span{background:var(--surface)}
+.chip input:checked + span{background:var(--brand);border-color:var(--brand);color:#f1faee}
+.chip input:focus-visible + span{outline:2px solid var(--spark);outline-offset:2px}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:flex;align-items:center;gap:14px;min-height:56px;padding:12px 20px;border:1px solid var(--line-strong);font-size:16px;background:transparent;transition:background .15s,border-color .15s}
+.opt span::before{content:"";flex:none;width:16px;height:16px;border-radius:50%;border:1px solid var(--line-strong);background:var(--bg)}
+.opt:hover span{background:var(--surface)}
+.opt input:checked + span{border-color:var(--brand);background:var(--surface)}
+.opt input:checked + span::before{border:5px solid var(--brand)}
+.opt input:focus-visible + span{outline:2px solid var(--spark);outline-offset:2px}
+.submit-row{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding-top:12px}
+.submit-row small{color:var(--muted);font-size:14px;max-width:420px}
+.form-error{grid-column:1 / -1;color:#8a2b1e;font-size:15px;margin:0}
+.thanks{border:1.5px solid var(--brand);background:var(--surface);padding:clamp(28px,4vw,48px)}
+.thanks h2{font-size:clamp(34px,4vw,54px)}
+.thanks p{color:var(--muted);margin:18px 0 0;max-width:560px}
+@media (max-width:640px){form.audit-form{grid-template-columns:1fr}}
+
+footer.site{border-top:1px solid var(--line);padding-block:40px}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+footer.site a{color:var(--muted);text-decoration:none}
+footer.site a:hover{color:var(--ink)}
+footer.site nav{display:flex;gap:24px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#services" aria-label="PXLD MEDIA home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAACgCAYAAACc/t08AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA8mVYSWZNTQAqAAAACAAHARIAAwAAAAEAAQAAARoABQAAAAEAAABiARsABQAAAAEAAABqASgAAwAAAAEAAgAAATEAAgAAACEAAAByATIAAgAAABQAAACUh2kABAAAAAEAAACoAAAAAAAAAEgAAAABAAAASAAAAAFBZG9iZSBQaG90b3Nob3AgMjUuNSAoTWFjaW50b3NoKQAAMjAyNDowNToyOCAyMjozMjozOAAABJAEAAIAAAAUAAAA3qABAAMAAAABAAEAAKACAAQAAAABAAACgKADAAQAAAABAAAAoAAAAAAyMDIzOjExOjI4IDIxOjAwOjIzAKYEUTwAAAAJcEhZcwAACxMAAAsTAQCanBgAAAPJaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA2LjAuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgMjUuNSAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8eG1wOk1vZGlmeURhdGU+MjAyNC0wNS0yOFQyMjozMjozODwveG1wOk1vZGlmeURhdGU+CiAgICAgICAgIDx4bXA6Q3JlYXRlRGF0ZT4yMDIzLTExLTI4VDIxOjAwOjIzPC94bXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjEyMDA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjMwMDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjcyPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CqScjFkAAD6eSURBVHgB7d0HfBTFHgfw/16/S+8JoYOgRESEZ8EGiIo8ERVBBQURBelFQECFiBVQkKYgKj5UxKCgSFEQKQIKBGwUgQTSSO/l+t2+/waiESnJ7Sa5wG8/YpIrs7Pf3Zn57+zsLBEWCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCCgtICgdIJI7/IWEMXCICrL12Vn7PW1FJfodFqNWB0Ru8MpaDUGd77fzYVut0k82iIir68guKqTBj57+QiIYqqRyhz++YXJ2pKCBD+dWL3j7VxS0jGoMelcBfpbiwxGo7tlVFQuV5TVOo7Pla6c1/LzxYAg148mcucYk9Py9dUtV+dct+AULKamZTnCNbYQl8ZyxRUhxef8HF6EwBkBURT1VHYy0GxJV+dkHgnwpLxJ5UtUNbRkBbS2tPDzM4eFhZUAuG4EFA0AxazFN1HxpmnZxSpq+34jyjar62arPFyrhOGj09qvio444iTacE/7Zkdf7dUru6LyF7PejqDCH+c5yR08IC7K9dmfPkTy25u/cysI1CI8eHdCQ59ZwujRtr/fkP+bmPVhcyrZ8rrdYfa/+9MGtC3JSKTY7nETl2jdjS0Cftv92KnrSbBETNoY5r8+waBjn+o1nCInReQusGnzuc11q7TObulzXk2VL6BsCqIYr6UT78wlVW6L2I3h9NKuQD4WlF1HTaTmryHR188v/4qIsN8OpaVtefWhO1OGdOmSV3GM18Q6azJNMWHgAPJTTfvuV712/MZQf9JW83g7V+b4GHQTufgYLFCpVe4IP995v6jHLxZiiV+u/UXMeucaMu9bVlIm+Pf5Mtw3tUhjILX87eSCJpQ5VWUWwWARnI41mQtiJ51v68Tjj3Qmg/O5xGQV3bK8IWXaVOf7aL17XadW0eBbb3jp3UG9fz47851jRc3WAcNiSZPRYe6WEBr/fXC9KOc+fHz4+fgVt4oK+zW3xLy1/43tk6b26vZXW3b2dlb1bzHpiR5kEObvP6ZVD/gqPNCT41A67sxOtdksqs0Ng/x3xVPRk0JsrOJlS0x/pQmV/rbIaXeqb/ioER3I1CnX5qkF8tfoEoqWvDJeEARHVf287XMKN1liA9Kruxt0KhI0nLSKKwlFQ8ya5ZMilVKXm+JTMu4TSHwuNTc/8fMJr63vFRm55KsJTx4VIsZmiSeGf6oRs1cufKDAlPGZnral6hUNApPyi7pfq9ebxLi4GULfvhYltljM+7IhFa37gvTW9lM3RdKPp3yJuCwotQhaA/mItPvJDsZPyVk0kLTm4KxiEx3O4jV4GiALtmCS2jjBrmBOldpiKZ1sFYlCFzKo22i0HEmr+XhXVy/WVTI3VU2rmLNYUmymjOLk/rwB9PwXW4/OGPvyDz2bN1y+9o7rDwgxMfaqpuUVn3PmB5Na28LqMNDhTD8+rpVqR7jiEmwhxCdlRWbrrPuvXvYH0aAfa3ubxeOj/Kl45zIymK+L/SGcvjvOp6YqBdsbQQgkLadpsze48LYJDcmg6m7Q87Eu1e0OyefC36gv74pqNYkqeu9c+Q1jbT4GOnE576Lldo1U9aOcl/HGmMsslJWQ8rBUzudu3pE4f9T07fc2b/rxN/d3/llo1sx6ru296GuWvAAyaVu43Fqu3/09r/Ok405QkV6jzqQb2ih/JMXyHrUMnkSB7v9u3BNIv+dzh4fCLYmVXdtNnbOZzdZe1M1LP8BHs5KL6CIr/2cTSXRypeKqXwFghYTUjEv/ckvNLfIsttGnikqebDz+lY9i/9P2daF5r2/EExO7B5uS4lb1TYsc/GU4rU3kg8vTQKdipWd+uvhi58H07MktbTYH52EGlwyG9HwRxUPBlDRnKakL27+yIYjm7Pbhyo6TVKjIqbgxiDBqN6oFv8eeapBpIJXaIeW4PHnpfx6vh7de4B4XtUKwnhNe6Js26Xh3OninuaSNlo4a718qcildV88tM7cW1OrWOb8dGRKdkLyly2vvvPbD1OE/8m5TKpKqYRCVWzre3FJuZR1vZ2fzjBKfhJjtDp+thxL+12feks6rxgxNOfuTNfX3/A18uY2GvENG83XLtgfQ/H0yGtzzZpK3UzrRUl1kmIVIZ+p2/nh53c7YHpft82amjt4QRS665x9mIop2qZw77GfKuaqiBNVRdqu42opclpfzEnMLQaNusemPI4OiTqbsvOnlea/tbh21mTsZzr/d51qP6nR5k9opeeVNyp3Ih53UGCm/iANfuobEsoHmHDe9vN2PuBdQud6/M9m1c6WTUVL04nff/bbl7rvbSTF3vVs4QsNyXgGuGKXKzmq3+6YWloycsyN+V8zkWd2F5rN/JFd4t1AfVerKfpnU7yre99IZsUKLy+mgkzn5LzQd9/I4sbPnFxbF4j0hdPKtFaTK7z5jYzBN28mdalIvlUJZVXPw1zo89ON5vW7rmzZ3fD6FRSqUskKQSObiAmeOcbvTpU4vMd+1+0TK91GjZyyd882W6It/+TL5hOimEoezWXxq7kIxPt1UW1s96qqRY0mX13/PYSNN3Boi70ywtjKN9XipwOm2zO5yCZklpbfuT0pf3/jno8ufi/umsZdmWEa2RIFcyVNIb/NZvj+A9il56bdyrrheyLfaO07YtaVv5Zfr0+8IAKu6t7iHp9hibXo8N39Np9feHSZcsegQuf3vM2q1aR88lE19ruQg0Klc/ON2i0JaUcmsFh1eHeFJECjmxwdQ7tKPSFNw9xubgmj6ziC+YllxTljVjT7/51QaLbUMC/585ZjHh/Xt0qX0/J/EO/VGwO0im8OhySozPzl7y+71bafMvqne5L2GMypy+U8qKO4Z/ckHE2t4VeXJiyfH3E2ujJdz+faToTzGNM/KVXU96XmqDR+sQ4YA91zZnU5VamFpv8Xb922+8rk3OnHLcMnEAuLJl24noaRXIY/SWXggQLEOj3OJu5wuSs8vfHbJZm5v6+Fyyez0WrHniJ8LjiE+MWlhpxkLJgmtlv5q1za8x6DxObTi4Swa0p5vZlIsCORrEjweMbmgeG6Ljq+N5ALKg2+qtojicT3lzZtPhrx7F28LoCnbeeCy1HgoFJ+qeczMVVEh7/75+qRB7SIj62XXd9UkL89PidwDnVFU3O7P7Lxv2z4/u9el1DjI2aPS1YC80rIXO7++6GHlStO/cyQWftSCXLnvO1yidgQHf79laz0fa/Xv5PEKBE4L8ElNUZml1Ym8wk2dX1s8sDptjLcSxsWJanKdfIF0Dv2S+CA6lMNlpyZPnDgmKLTaY+Zt/WFATdYJNeWNALC6snzJjC+XqfalnHr1lpcXDNI3fvMg+XS5V6MJOLDkwWwa0ZFnUlAyCHS7hLSCojlXPPtav6pkVTzOwV/CS++TsWzA/7b50/gfQhQO/jTUNjrytYMtyqS7nxS5SaUq24XP1LIA9xI4XC7/PzPzVlwzZeZ9CAJP+9ucTvX+5Iy5/RauaFMTe0Q8FOdL2d9/SLqyhq/zXadxRxSeaaAmMo0066/A6U4Nn58Skxbf8fq7j3tytcmbNr5PpxfvIVVpl4wMLS3+lW8Kq4UIx8Unhmn5hRPG/y/uIjdSeZPU6bzUAo/3bbT8HInkcDo1B1Iy5tw/d9m1QtSgJDLd1puEoP0L78+l8TcUkeDi7jZuNWUvUsDJ4zZSi0vebzz2pccvlF558EczlvIdg48t3+FHz3wXSpaKwfEX+mJV3uO7ITU85q9tdMRrv4SdnCEMivXsLrKqrAuf8Q4Bbhw4CDT9mVPw6X+mzb3bOzJVx7ng8lhis0d9e+TP5ePi4rhrXcGls6ghw45XyKfstjX7fenVvXxVqR7cWa6gAJKqC4HyTg2nbueJ5MWduy3sWR97siQ2nqNQS+bkF0njVM3bG0hJhXyPa032/lXsK/Yrdbgbrz2YMLq+nSgjAKzYidX9yTvd7HQF7j2ZOls8vkFfHgT6/rcnUdCGt+7Lo5md8/nYUy4I5LFZumyzdWnDZ1/pf66s9unDXd/iy0vIVPr48h9PB39WKQBV4rKvFPyp1a7GoUFjfwnTzBBGL1B0jsJzbQ9e8xKBM0FgQm7+eyP+t7qVl+SqbrPBYyWLrPbr1scnzhRjYxWbXEL8cOSjpEkfdTBRS0M2hvGJH2+mEuW3brWw9nohwB0NDqd+b0raBze9Ord9vcjy2Zk8+ezDpCv9z7FkPX3wG/f+1eLJk5uHzWQWlQzuu2B5k7Oz5c1/IwCUs3fcTp7s2tzt1s8THpSSEcJ6Z1DA7H7kDPlq4l0FigeBVrtDn1tS9sGNr8znQPPvhc98hLjXBs7iy74D1+/zoTF82dfi5pZDicaDgz8e8+dqGhI4OnHm5IVKT1D991bgN68V4MvBPM6l4eoDf7xd/iQAr81o7WVMqvATcgufalCoGqnEWsXkKTeTO/OdwiJBNWxdBOVKk+ijdlaCFmlUVYA7NSxOd1BydvH8kydFQ1W/5g2fE7MP+ZIz63l+doAwZ0/Q6fKjRPtXjY0zu9whuxOSJkntcTW+VqcfRRUjk9/JN2ocycgZVX7jBaclBAcXUdCkgeQI+WJCtwKac0ceGSVl6VKs3IULqBQE/nkq58Oecz+4pzw56WA7MehNDv7Gr99vpMfXhVOhNEu/El3fHPxp1WpHk+CAUcdnTVnCR7XUJ4HlchTgAeM5ZZZ7OkyfW6WxqJcDkZsnQysotbz+wLxl3eVcNhNT46LJcWopP3/Ed+K3obQzjaf/q8XeizrbV1y/SBNte8E/we2Wzpix8J2HlFlqvrnH0jfHyDmma1eS28DihcPIYLkynufk/fgwP+igDspP+U1iZsuAXguWX1u72+/52hAAem53+pt8OajU4fzPNVPX3FiRlBByRfFh69L+ZPN7d0y3IvqwRw75SlNuS5dk5S4cBBaaLaE7jp38pOeb790jHnlkLulKxq+LN9IADv4KFAz+DDqNJcrPt1/i7KmLEfzJ3XH1//tOnvIgITt3Wuzq78Lr/9YosQV8QuZ06Lb+eWLJqOVrm3qSohi/REu2DQvJUHzV4p2BtOwPvnSlVaKi8CQ3tfed8vpEFPN54JYX/KM8lZrstbf13r0mkYPAVJ7apP+Hnzbz7pyezp149KUQfnjoWGnMxOyfg8hs46OL/6uLxcpjpuMTkyeJcX2qPGtHXeSzYp0KPwmkIlkFf0qP2JLOEpVYuLeOnPxP6o2TQl+FzhJsTreGr5Pew9X2Ds5pee0dEyPY4+PFMR2EgdpHbi59ysEnmMP47L5M6kOTHXaL0uOpgn87eXxNYoGgL8zU0tMbwihfweCPnzZvifTzGZz01gtfKKSvxB5EGnUpwOMBebBz0y/2/SJNefBWxbFel1mq83VLJ2Q2W+NV8QcWL9q6tfeIas2JyY+rCp0wkVTF92/7w0RTdgRxF/ulH/xJjwg1atSHTS73zbl1vgN5Dn82j2gcihkNKvYFH9NlDlfYz0eSn+aXplS87LU/tdljSWtrsOOgD61N4Hna5bTrFcXP00aPg+ecsrLeXU50W0S0aqfXmp3JmFcHgCadtoDz+bXZ4VTkpoNWYcbodmHWa4P0pQ2T81W0JdlA3KkhPyDjAnMiO++OsxvEjh0Fx5Al4vAld/Qve/ym0jEGjZtGfBdGOYpM6ipSSjHp71sVTma+4zjTzFGlnAO/4kjlYDvIx5QZ7e8z4uDrz62ueBk/a0GgvPLxtOaplD8pnYp/0lAA2Sccf6ctXfbkp+IM3Xbo0GKKicEE4BJNeaVvvWvhpn3PsXYs78EqDZUQE4feQ6682FM8Ye3g9WeGbihRhv/eXd78mzvnw1mlZ9eZdZXh2A9n1d6qpbKpRBdVRRmXfipczqWJzzMLix9/aumKt99/up/0VHevXMQTbzYh595nXPzgVKn3zypNweZpGWLHYIObn/on8A2entfD0vydRzOypoiHDj3g7c9W994AkAORYB9TWmq3FuOFe/tLgaDs5ejMm/3ommYR1Eg3yK0rmPTdnybNU1zxppdxCymnkeQA0OV2h3176FBw95iY/MoZfW+o4HiPaKyYMLCkzw0lL4QY3dT3K2lmf2mQd3lNUPnj1fudv384T7oJkdNRosOZH84d7GPIvKNVkz6rxgz2+rOX6mF5/6dbhujzAoxqK3e0eVz7SEeUTnDqA/SlwQYNCQm5ajqce6aYe1oxVqbjzJkdrhajVmy4k19eU/mty/l36aaQY9m5U1qMm3GE5k5bcTELMe2NdmQ58JHV6dYOWx9FJwp4H3n1Y68vtkV4v6oCzQK1xcE+2lJuNjxepK9qBJc2SFcaYtSJqqR8NU8YzseQ9IYi5ZynOiMh+seElDs5yU+9JVD/JxiP/ROfmkQme8iq3f608YRR3rbzVboJHYopo0xNC/bzc7c9LY88LIyfsd690+qtd3F+1/0zz97115mWwbsyVZEbtyiqim75b8Wfsn8Kz+3iR3VI/8QXxBND/e/pkD1yni2XHlsbTjap4Hja7HKjqFVrIz/f8/uVnMruc2VUaPm/F8WEJ8Su15S8+DllU/+vwylLutNPbmGVG0RWZJYvy4QYDZl3tm7ed+XoQTsrXsbPWhLgp6tE+mlG/fhw9C7SyxgEZtDxpFQ8C6qj0I8MqkeyzQVDdierQl7bEUj7MvhkwdNKrRKDw+UWrA5XT3Fr7DdCl9gaeZh7pdXVm1/5yT3qXKt90RNLV5746OlHfj5fxvmGMX868ep7pLOHvrE5lL6RLlspsF/Otz687kUCXM92atl4/id3qJfKKufSJqn4sk/+7/4UoHkwz1IwZN8pocEr2wNoVxrfwCu3XeHkHXx5zOZwPkSxsSv4n9RCetUips1uR9bix82FAr21L4BccnLI3w33FenpjkWUUqimD3gsrlnqx/cwJuD5U1WJWdlTl8TH/zC0Y0ezV8FVyoxXB4CV8qnwr/xQXON7i6ns+wEPxJT6x+wJpAMZ8u684x5AfWJWPt9+dP5FaPnRNPHkuLw7rkh5e/2jGfTI6ghKyOdH1dR15c8joEN8jAf7XNt2wOKnHvrl/FuAd2pMgHu8dyaUZgoxQ1MUXMfvYvKs9febDnx2R4tTjUbyScfyQwo8WYJPeDIKi7oJ7+jl9JsruJlekhR36RRb7YFrfzvy7qNLVtz52dB+/xriJopbNZTwyttkLL5+xU5/eoMnrFWisfYSgapnQyTptls5TXbV1+VNn+RynufQFAgxQ5Qs53+IiTNWd2/+2+ouzc0tR6wJow8OKnAnLJfz9MLiG166rrPUrvEjrrxn6SM98s0yeCoZHX6f/BRI8TLbb+I2MNDHsDnUJMSEBlob9Gxhps/lPIWHp87Kt9lvmvfFlgdY7VPvkftnTi7TAJAoIfLphJZHv81TG93+/kYO9eVXRaKguvhpl9Bs7jwxZYq9Q8Nj73z9cCb1WhlJCQV1GARyz1OIyfTHsNtu6PNK33uO/vPwwF+1KqDhWkjhRWgyaZeY8e5DfuYfvlvYMyswsbiB/B4CDnT46TRhT9x15XUfraLz9nQpvCn1Izm+/FNgtl676+iJhfxknoHCFVdUGr/Ml6xSJg8jfemgA0f1NHJLKNmkbovLLYx2i+RvcEePe3/WTCVmx/LkwBAEUXCR2pViDkq3iRr7nTFXrBt2R6dTnqRV3e9w4Kv4HhdaTPtDTF/QU2/dtXVhr6xI6TLmhpMyL4lyOVep1eHbT6V15m1cW93trMnPx9087UaylfYszFXRggN8uZb7dOQsGjU5fYNaTSNV+t2kz499pn0RrTluknVruNPBU+oUlz7PvYDruBewSE7+auq7l20A2DL33atJrYmylYiUW8oMHnb1VtoxgtvJd/VVYREav/6umDTF3ib82DtrH83UPRQXyeO06iAI5DusA436A6O63vJo7IPdjlUh6/hIPRQQoobtFROHz/MLypj+ym35dNfnUTy+R94iqtSGHUcTu3AqCADPopQG0KcXlz7cZtman7hZml/R0yWeGH4LiTmv5fAo4cHSlE0Wri4ufs54VuqXwp8iZVnc4W/8lDeprrdGFLOluU4pws9H6qmplQCwprZZaDDqT/HEsFcMflkLX+uSSztPRVOxdDODjLaN58ZR7Tya0KCm8uxJujzRsooSBr5IRrthaXwwHcyWObSFL8uH+5i27X/h6330xK1pZP5x5K1XmEM7NbTStmQZQTT3oBbZHVfNX7P1ca4HFlXUA55sc019p0oBS02tvCrp8s6WF9qfYyXlj00r/Gk8Dx41fMJDKI7k8AEksyLWqFXmtk3C/3EDyDlW/ddLQtPXPyBjx15XRbqLvh+YTjdFc0eBjDuP/kq4qr9w8Beg0+546uqW9yD4qypaPf6codVnZNEX3NrcQjdzxUbSs6plLFLHVVJu4QWHPMhIvt5/1elw0vGsvDeunjKz/Kk9YubSZuQu/JinHfAduyGcfpUaLZl1Tn1Gkqp1l9NZ5/+ku9r5n8hTjdVVZ6SyuzG090oq0ya3a2qjWxvzzDYyy7mbp06LDvJvInbu7D2dRSmT/0vasjtOpWtO9/7JLEf8mFN3k7DQeQKtcgkNR6eROvhTNQ/LHd2hiFTyqsny4/tUQdH4l1bz9B9euHjPTj0HDj/cVhVYesBH3DpcoYHmOUQR10SRdvALdoe138fbAmnC1mC5ZYTPsFRkc7qybm4SnvDOObbjfC8JjaZ8K6bM6hsVsO/zNY9mBPb+LIp2neKxiDU9JlCj5eBPs/2pa9s89OY5ximdL794vf4KCNFjjolHdu1X+4ndujXiM9skPrOVsYg8xiXUzxSZHRurEWIvoRtBpNNNmZX+aVaRYz2XIa2wZMmc9evTqeSzGaS3Npn1XRCtkDO26Ox9plh+z04Yf9dHAcG/W554fOAfPC9ek/v4ZG99Ao/5lbNwOfcz6NvSouEqitkmJyVFvssnDlpKePx50js1i/aG85RUHMLIuGdOarsDDbr43S+M+FZ4ceTpPPpc/QGVFg7u0brM9/ooG/2cLuP+AD7RKbY5m33684Gnuai+5m29gN4bADJcqaWkZffF6/eJgkGq5mQt3BtLWk0DVZA+y+RrMPr/lOZLv0uXXaXKXub4AWmiaoNWk9X/1lurPV2N0HjSJjHljUciAvYvj3skM3zAqgjakqrMXVznAlNx8MeTsK5/9KbrnnxrwIO55/oMXrsUBfgg149KIncqtY/gCzsyz5qJG4Zgk7Eh3R4h1SEKnaDVvXu0j5tOSdNCKREEch1WVGqN3LZ/85ZxrUv8N/ED6mfsCuKLarKrs9NQnEyQdNM3XzngadCwQOC0gD76DxKL7m0VJl3AlXtg8DFssTbYqGuvRImQv4eSJ/QlrfmGYyl6+vB3vgAhM4LR8OC/UB/TPEEQ/qrDhMUjD4n9f12rD8jrN/TaYg4A5XXeuXlICPcCjn1iycqVNPSRRPkIyqUgk0+5jJwrpQIbab9LVUWd6z3PXuMx9lwpn34SCP9U6gI4B4BRAf7fFnKz4UmELzSe/J14IvbOBr6/b/jqsfTox3hM4NfSnEZK5e8MlsBjXQIN+rjRD3XuH9uly18HvGeW+Fa9E1CHJpCYRuF+DulhDMRj8WUt/H2ZKchavfJf5stlw68poQM5WvryqAJ3S0s55AZ4w0m1/4R1EbSWy3SZdElOdqPM6fI9tOEmF734n2Ka+rM/OewKBa3KqyLF2hYwH99BJmFKpD8HgN4RtikiIKbuNpJ10XOkddHbe0Ipq5Tbc5m9f3467Z/vD7r/m1tmTv47j7E8HOCJKQvJVtznwZgS7WyeJeRwPodKnrbHHHNY3WLo9qOJE8XY2OF8xcRrhht4ukl/Y9X0b1LvnGL/2F2qfKVLrApuuVGtsvuZ9Bs8Cf7+5ssL4FuudDa7wGf0UuZqoOTygehv0OnaBQZi7Nbf8JfPb6ozXd01cGhdEohcLUgzAsy9O4ca+vP5kULVtPT0ybfi/em4dLlKieCPsaUaQrqh55amZn66pYKV2SWxIy/zjdD48yUkHv7HN51fUovj0ydJb257INFInxySev+4wMpYVBoNhfn5LLzlyit5buCzliZ37SO36Vv/YDc93Y5nwJEmLZKxuHm8a2ZxyWPdDQ2ukpGM4l9FzSGXlGfuMGk1P+19ccyvnibFk1LfSa6MjTklYlhvvkNTekSdUg1F5TxJ47aSC4rvH//pxs/nb9ghr1+7csL4vX4IOLKukE6msks00hVc2QtXiZdc/ZFhNpkbNbDT/G55pPWoP/88rNIld3ltyN8Jc8DX8wqH/enrC0Qb9yjKawb/Tha/XSICusj/SPOa5ZbwECcFDg5B9hgp+a5iRlwY2fmucYeb5uwJohLpcapyyhOP/fPVqJL7xbRada7cCQJfIfNpsogcarFf25LTJ4QyLW1u0eeXtFNT4+LiFJ/u61zbUJXXLrkKvCobreRntGqVq1F44CweQ+DRzBpiwtDu/DzQNVmlgk/fzyNpew2O/5O2W5qiIim/6K63tuxcOfKDz7zq9n4l9wvSOluAp05wZjeTQrb4TB7ULPPuQOkacoHFkkrb/3fpDCXQCPRddtNtZPb7+YGOJTSG7wKU7XT2bpD7NwelOp0h7bUevht5/JMgjWjBAoF/CFhTr5WCo8PSneYye66kKCvAaEy955df6vBI465My/djydfeeDsPzYg7yrfoyrn0K2Fx/RXm5/dW7IAHs/9hV/mPMTO+J6tmZ3gDBz3NQ0PkWkptb6HF+vDSpOIbK6+mLn/36jGAdQlTpXWrNBRk0q/5Zfrtm4XYKn3jHx8SE0Y8QuqsZccy1Yb+fPNHfBYXWJnd2v9YwXn+kA7E5IKirisOHNlw9Quzeh98ZZJXDUw9T7bxsgwBMXNhEyrRtHOXOWhbqrw7gKVsCFyB5hSVZgsLtl06AaBaoMxSMZdsjXhC2IStL92R5/dLtv50j7zcm2Zk7LvKX1Wr1aKv1ufZNv4nriGVplfl9/A7BMRsHkBeuOoaaQbj9Sc5UJIbtnE5L7VY/6R33lHgmoFn+0dMeymaLEVD3GVuepN7/xzSdGly2kk28dOIzu6NXVdHfvzWdLf73FHyNJfgvvpYtrOhfxo1DXCSXufm2T543TJ6Hu1uUX0kI/0F8dChXkJMDO+lul0QAHrqz13IHPyl39c2ZpIgdKx27x9PzPsozzv68bEMvbo39/wdrO2JoDkIzLeI7Zwu9zcxk+fcd+iN8QmeUuB79UCg7PDjZLSG/vi7iXanyZ9qSMOXkltER+b8WQ82vTpZ9NGIeuGaN/aLyZMmmDSJSxbdnU1dV0RTunRncB1fLxF4zFLL0KBlf858bhVNGtu2OtvlbZ/V8ARrRn3dNz8W7glXqTjyV3OkcyksZT89SkZXw/ijBtqZIn82CelEL7OkJEnYVocnerZUfuSbPXTdPl/aKN0cKSf4k/YxB3ClNpfmvV+LhpBw4SfcOZwcLbqj/r67U0bwV3548ZOCMovL7r7pqx/u4L83lr9Wh/+r+xJYhxvv+ar5MoxGbY/wNT3z/tN9T1YvHVEtnhw7gpzJb/16yqDuz88DPlxXzwPmSVCLeaby5IK8dbfNePfRHdOG4TnA1duZ9eLTYsKzHYhSni0uEGjqthB+/BjXYrJ6tHhUkFu09ohpvftSCwArduj+nJnLOvg/2bl184JH3+ySRwPXh/NUK9wYyG0AKlZQ3Z/SCadB98ej7WKek8ZkiTS2rnJS3Zz/+/N8GdtfI6R3DbHOrqtuJSnak7qu9xaaHDZSuY0a0/5/Z7R+vSKmxF5NtkPPWywiTdseQkU23kqZwZJeIGfnq1ombagjCjHrrXZUtOdxM0+x8Rb3/kkT0CuxSMk4nPwI2KosXNIUWm352rjTRUjIyJket/XQj327xJRWJQs19RkEgNWV5cpLmjm8UZDfhCMzJ6+vXi3MwV/SpHEkps7ek2KkPqsiKVW6lV1WY1zdDTjr89wTWEpi631paWvufHXR/ZufH+HxzSxnpYw/vUBATBzXkU82vi52iv4j1kbQbiUmGueDnse+5qVmW3/zgk2skSx07Cg4xOLVoyhn9VWPXl987Xa+bL5Eeuaoti5CFoFMem3p3TFXjYrt17P+z93JdahFVGd98erst2tk53mQ6JxFHnzJi74ipkzg4O/YlxaXO2QMn6wo01Mm8M1i7pze19+yq24CQB63XPrkBH5il++newPoR+nKRV22lUrtb56UuNBqv+H1H767l5NcqVSynqSDALA6atwdbtJpi8J8DRMSZj+/jNvBarQGHPylTB5HroTZO44ZqR/3/J0y8xmaNxzQ3BPIJ41Ndianfd3t9Xfv/36KF/UEusqfj1e9OLs6+7T6n1XyZPAfa/dRiUJprNypTTnJNn1UdF37/5B4okd+cdao7ckmv5k7A2iPdPOHzB6B8gzzne8hfj7r4xoST1p06S6C/4N54qnYEWT9Y/Ord+aaDrDfvozaGadbWVV1+lm1M1YM77fjs8pv1OPfOQaUJsThH4p2rtQLEQ1X+6IS5TxqiEDdWl1LlPhAUUH6kF2p6pDZOxvwGF+FyjmPeYj09zvw5C0rywbXgayY/FInspf0LcxV0dx9gZfUgcJPCaKTeflTnouL2zizb1++26xuFgSAVXHnakrgZ+eGGHS/d2wYNebbKcO2VafhO3RI1LXxeXYaOU8+v+6QDz31TThlKRX8SeNXy+dJrMqGXOAzPDbB4qDGu0+mfnP/W+8PXPPsU1s55WoEuBdI2/O3uKrUfk8Dn632GEvPV3meb3LQ0zI8eNPxmZNH1UijxZcjov3cH95YPM4sN8LU73MLkX/mRpeIPqYjub6ULM0/JyWq0MkG9/65eULxdULfvlW8hnIe03rwshAdu1tMHDkxJChj0bvdeTwg3zhf7JDKXO1kXqp3mgT7f3mia/v5wpuXVBtYO4DethZu+I+dPD7pRs046dFgshZ9qVuIyEyPynfrfE8WhFNSIT88VWoPlDjJ45xJT8nQ63WfEr0gN6vV3s6tW0UNOZ6YTEan7sMdQXQkj6e0Uaj+qnZmauILPA9Xid11zZd7jvXn5KvzBFlFc4MA8EKc0rhg/uej1aZHB/otfbBtw3lv9O9frce9lQd/xjFzSJ024otffOnxteFklTq1FDmYBbqGH/dTYFHxpWTelXInmeUg0GwXozcfPfHF/fOXDRBHD5IucddtEKhSN73QLqq196RjQaDDNbc+kY6Vahoqln4m19l8BaU8UJF7XFTOFJ8MmdSqY6/e2GVLz8qvX8K/v1ewYOkQ/4HdOlxV/MDrPPnyyM2hxP35Nb/FPO7PoFGdiAkMHiP06GGr+RXW3hpEUZCmKa4FxNrbpqqu6WiRGEaCRpl5WLOZUJoInDHLOwKUOi65nBtVQvLUh+/cKLxR+/upc9NJ3UgsvTszU00LDgSc3raqAteTz7l4cuicMutzsau/+yL2Qb7brA4W7w8AuRI8fXTXoI5UeMoXqT7iP7ixN6nIrVGpf48K9lt3VXjEB1+NG5T0xplPVfUH3+qtI8OoeaRJf2bVXh96Yt2Z4E+RBllFTf2ocNMjGb5JxRrNQzyeMK1MgfGEPD6hzG4P3Hzw2Cf3zftwgDjmyW9YpO6CQCVmLK7qDrvg58qnQ63ZHi/pgdVKLVKxqYFFmj2/aWjI+/f27GipgeS9MsmhPB5wyMlZw8n6e9tnbilsuTvNQJ9KTyKQOxfZRbbWqNPYb2/VbPi6CUNOXeSj9ettrmb1KpfPkNfG3FCXcwg5eOXfF/i6LC69+PgdXY/N6nXLv58IUSOyDKDUBI5S28XVvtKL1PPcIDjggyfaty8apHTiF0lPPL5BT/ZPXyCTS/Pu3lDu2eQwRaFezYusunbf5vq+xOls/Mme/U/xEfE670opAKnVxasDwACdYGsT4DrJA1FrrOGVnodqdZFoc2ucZAjINfn4JpXZrLt8DcYTBwb22is0a2Y96sEuEVPHGck++3+kKemzeLs/PbslhMzS3ZdKBH8cFPOg8Fwf3+geEab0LhER5pkre2fRozyuMFWJ6Sq4cjLbHf7fH074pOvrC58Vp4x8n3OuYHTiASi+UvcCfNz5a9VJndu0+KQuKqu6BBCaTcoUEyeOU9GJr2bfnav+jecHPCjdva9EeT7HhkmBdrDB8MrGCUM2sfWltXDDZ3PSFWvStT/X5YZJdX+ezcEDEd2ipThP6tBeX5f58Zp1S+Vcp0m9J6adVO/XelBC6u/7kNZ6c2KKjt751U+hq2Veo/uPjJQ/Iq6wbMzoTzYsp8d6pP3jzVr4w3sDQO6C9jP5Jewe2/12anhDYQ1bnH2Ql1+eEGLHerRaMXWOkWz7PyODpdf87wNowg8hp6eQUKKx4MKp02gKW0cED/hlxoh9whtiPD9NhG5ukzPzY3cW3cfzgJaPUZLbA8RBoMVq9/35RPqCW19ZoBFfGLUYQaBHh8Ml8yW1WiU2Dg6KndevV9Yls1HV2BChxex1YuKoV6MiTk2bf1cOdV8VRXbptEjpCI17XxoF+m1M6t31TWH+9LPrpmrk2Hs/auFT+pRiL9g0wcV3tJNgd9i9ty2s5d2o5rF/jUICZ7/9ePeMWl41iZnLfaj424mkc9L8PSGUK13VuhR7/ypguZ0tczrDv/v993FcGibWdhsrN0yo2Iwa+SnVrUW+raVhrVLfWU3+k9ZR+Z/HNZOYtTSCbAdWksbaa+6mM8GfdBKlhLQU/Gk1Be0ahT50YMaEb0+jC2LfT5a8TfZGb97exkIf9czmObZ4fYr013EQaLfp9qdkzL1pxvyRnCozYbksBaRLQoG+X//2QOcVl+X2V2y0362zyWLa0qWtmWJv4uHAUq2h5MJl3FenOdWueZPRQqdOl/Zldomurv+d3neiSqXE2bmSB0IdpSU93Uqv3fbR/f0+qJMcmOOf4AnrrzmQaKRlfyjY+8cdSuX3nCv1U8LxOEr4p6zIYwFTCoqG9Hvnf1f/852a/0uJsKTmc1lP1iBmvhtOxVu+JK3lvunrg2j8Vu75k44SJdoIPnB1WnVRTFRI/73Tn/2Bk/zr8FsVK9gXrJv3ArkazH/gujJa0iOHAqTxSX99Qh6gxWbTHUhJnxc19iWpO0KJrZGXIXy7dgU4KDFp1MlRgYbxQsfqP/WmdjNbs2sTwvuWkvGaYeQwZj17ewH1bGnmGYWVKxJ6rdp1ffNGE78e8XhizW4JUofAWQLSVTeDNrNL62YjOnZswAd27S5iUVwwuXLHkd1F83jalxJpkikFihaP3nby7dFmJf+ZNG6eEk4kfqCNIovN5fbdfixpshgXVwMjOs+fRQSA57ep1jvlwV/J9q9Ia795+jdBNOOnwNPjg5Q4QKTgT6e13NS80TDu+fuOk/xXaDd6tGAbPWfhJHI1eueRG0vpw/9mk1Za978+Wa3N+uvDdoeD8kqt06PGxMYiCPyL5TL4RSBfg764xzVtBu95cWLSZbDBF91EodGk46SKGKfTkXtB9xxqEcR3EyjRE8i9rCEmw6ItE4euPFcZv2jG8AEIyBAwGXSWm1s0HBE3+skjMpLx/Ku524eS0dJi13EfWvWnjyJj/1RaLUUH+T/v61Y147ulFft3ZFjeD0kTkmn6jTw6TYETQJEfyJBbUvZQt8Sc6zwHrP43Me6h+mb/+oaY/GFzKt30iVPluGnC6lCaJz0xQKkrCmeCv1uaNRu+5cCQOG4Yzntxd8ECwTZ/vjiBTgyPePA/mb3nWfJozCZp/CFnWQoGZS4Oh53yymha8PAXdYcWPTI9Rqj7h1nL3CR8/UICfOz56PXmm1s0GrZq5GP/6HW+0Ncuh/eEZm9/JiYOub5Jo9yx87rl0gN8A5ascsbBX5Sfz64Db784VRCkiT2xQKC2BKSrSxpXuJ/x2W8nPLNagaaiWhmX5hMVE15pRO6DYxxlIs3+OZDnpOVcyB37J9VfalXa8Ls6L5va47acamXqIh9uPH3cQlKXdn2qfTEt+dVfkWeFO9ykPZKZN0OMj7+vtq60oAfwIjv6Ym+LGZ+0IdeWDU5y3PTEynCaF8/BnzQXkyKlSCqYWsutLZoO4+DvY2EVXfRuaG48LOQ38glyRa4cdlsRzbszj/heRcV6AqUgsNDmmNx11KrF4ga+XR/LpSnAE1/7GPR5nVo0eurbiUM/48MZQcnZezr4npeo1LDrv+1LadL1PJm/NErZk4UbKr2Kchv464ZFCkKZJ0ngOxDwSICnPPM3GYrbNggfnDT7xXc9SkP2l/ieSzFpOPnYIjZzz9/aRJP84I/zJE1l0zAo4LMpPW5T/vGJLeasJ4d+T4MoOz10JT/O19OyX8lO5MlOckrLut++eU+XSi/X6K8IAGXwihkftiHzhjVOl6X1E5+H0aeHudtawbnB9FqNeEOT6Knfxw/9pCrBX8WmCOH8gOmmU58kR/gXwzoXKx4Eik4HZVusg8I37nlH3DAfQWAF/CXxk5/RpdWRv1574OaWTe/eNOkZXI48z34Vgh4opID2z5DLWPB8l3zq2sTq0eUgLU/50r5xgynxL08+eJ5V4WUIKC+g0XI51/15d9tW98XPGL9c+RVcPEWeDsgups1uR1Qy3Mr3VL28O1ihKRJ5Imu1Krd9q4bS7BWKn7xyR4udNFHv8IzwNKJDEfkZz3th7uIIlT7h4LmJjmXkvCiKYq20qwgAK+FX51cx9eXOVPb9xkKLvdX9n0SenhhWbpd1pQxIwV/7xpHTdjhzF1Yn+KtIQhAaWcj/+ifJYtwhBYHTby4kQRqnpFBRkILA3DLrk1GbCpf/npwcVLFe/KyvAnxscK+fXq81NwsKmDe4Y7s7N014er9yR0x9dblwvoXIiRy0hU808rzQC3k8YLQvd9JXpy3gXopAne6D8VdGLYP1ha3xrkICUjnX6uwtQwOXdmvduOuq4QO2182xJ0q9dAJZjk4ko83/60N+tOcUxz1KPM2En58dbNSvWfFk/xMKqf07mZAb15HNkNAq2k4PXKHQzWBSL2CZ5Zb20+fc9+8VKv8KAkAPTMWUN24j66EvCyy2xr0/i6T1PGhVyZ4/g1brvrZR5PSf3IVvCLGxHk+WL4QNLiHfyN5kN+54/p5CDgL5FEvBBzBJA1czS8x9e8z/ePnmxPwAKkmpTtPngTy+orgAX34k7gngMUDmyADfb7q2bn5HwuzJ4+Y+1Tdf8XVdogkKy99eRs6ID65qYafXuSdQJZWxqix8d3WoUX9k0WMPT+p7GTxXuSok+EwNCUjlnE82+GZCW7ifaVPnq5p2P75n8vDV44Zm1NAaL54snytdG1R8JVFh7+I8Fb3MY//4CYEX/14VPmHUqMuahTdYWIWPevwRIYDrSE3Ie8QxrNQLqOe7gpXoYHG53JScWzBtyeb4AI8zV8UvKnwTCD98lFPkeSR5QLR0TlHFivBcmeUDlrtBNSUlJTISOVfCnr/GczYKlPLcveT47aNTJa7gh1c1oF1JhtPBn5xtlbJ0Zis1Og21Dg996Wfx69eF2G0eB38VWyk0eCtXTH+2N5Wmr57+34JbedJTenFXEJU/YU0JWX6eUlp+6b395i5a8dXgjrGdNDwuUCftek68/BioyEk9/iltCzfWLtHNW1Z54QeWSyWoPmxrxb6W8spnx2qev0Ajum06lSojMijgiwaBfnHbpoyQevyUuJ+1MlLN/i64uTuDdwNXwqePt4oNreZqz7uPq5BOrOCm8UsmU9a26x+/tbjtwTwDzfrpAjeCSXNH8PqMWk1JTHTk0L6dYqofbItuLekF0vJ2n65rq5DPc33kzHbzFBnlQ4XP9ZHy1wR+4Cwf63zokFNu3X7eldTBG9IBzzvDJUoPzj7Pwu1QvSnn0iZIRaByOXe77RqNKivCP2BtVJDp850tf9wt9I31bNSa+3R500pTTMip36X8cU3TwpTbiHR2WrY7lA5lcluq5j4EOTGgtO0c6Ab76Dfs6HTqsPRnzS6Ry8mSPf76lubI3twLuOIgXwqQeyWQA40Cu/Pqt7f+8BjnfVFN5l/ZAFDw4wcah/zBRUnbJUoMLrS5qz1NDod9QplLZ0lz+BWH+vkcbqjX22sSoFpppy1rSa59L1rthrwFO3xcapdOuKPZRe/LqNIq0ux++WZR59SqhLW/ap99RYidoFhvWnkQeDT2QXKmfzy1s7NZvtVpOpCuNvHcp3KKWvl2le8vt9qaZBGav7GtaNza+xt9zg/XC4uJ9A/r6dQZuTtE9jqqBFhDH5K2r9Cpzy90GkoaBvvskKq906u6hx8hsO1Xjgo1Dfx0vl0bOU2CWqHTV4W3xSUKrhKn3logmgp8DYaElLyiPww6be69V7c64NRYfl02aJB0z51nDYLCea12cvpmR8muXuNv0ujva+MbwU11tcuNtI8L7Pr8IrehpHGQ39bEameC21v/obliWuwAEgonjblVYzhZ6h9hdfIJwznu6M2xGbLM/KyrCB/f1ZsmPb3bo0bKGL2H3OovdUaNsVdrvzC+g7Dai4pEVYFDm18o+hQLDtfu3y6Ugq5hNjlKDgt87nB7tDu40M6joC70+XrwnigK7hSbX75TpbWH+Upt17+XnG18PD0ZdIQc9uhIX6OhS2O3n0rtnXWam7en1KWz5rtNhSa96eSpwsLf+PDL/W/btr9YyjL3x40fL82sJ6+cG69I4jOONQa9WtOzjX8UCdW3kMpbkVNXaLUJtpsaW660m8Nsv5/yDeva2CnwebbHi1TPnbT55wlqvb1VRMhMocvTsjtQLpYZofnUbDFp7JukKRs8pANpsopdQXIe+iAVKqtLY092+BZyf1Nn7gR7n0ua7WL58PR9RcswZ5Z33zoDZRUISUcOaHkmPI+WXGOg+6uim1yhOp1rUJcuPLLaOxZRjNdSzh794UNEe5OOa+5vqly+NlMnZ7I9QJxw990W3ikeVOcXz4vUo0o57xgoJUWdVGITPN0/Z68p0akXV2Z0dcafSBC2bRtujQkj1cHn3tNQwYkL9yqcnZC3/u0OdZIrxkl797oqX5JnTx1lfazNTzqhVlkKZVRdNbvhPFMVZVmau3PCmznvzVa7qEcPKeCrkWOsZrfkHKnHiqo+h0gTG0vUJn2y8RyfqNpLGbyPQ/+9j6v25cqfErXx8UQdskcbSWv6d/3KozCIIuzke6Vb3n4QhQ5DSLN8DAltkl8y8OTz/15X5Wyd73c3j+NwdXVSaqpbGDrUcb6P8bGu5mPdkJNXIpRlH9coVXecb3218bpULn603+M4YQ8Rp9/bwcoN7TnLhCge0tHhbbpcdalQmpGh9tZt/7ucd+Jynl0z5fxMeevTh6hPkIzyJtWpftzdZ0zRZ0Vd5zjy0wHttTJhpe3/gvenP+/PIfd2sPD+rJXOh61bRU3nqz7WU2GGqpCPD7nHbj63p6vdXZ1lFzku5a4H34cABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCECgLgT+D8Kaf96/NxqpAAAAAElFTkSuQmCC" alt="PXLD MEDIA"></a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22"><use href="#i-menu"/></svg></button>
+    <nav class="main" aria-label="Main">
+      <a href="#services" data-nav="services">Services</a>
+      <a href="#approach" data-nav="approach">Approach</a>
+      <a href="#work" data-nav="work">Work</a>
+      <a class="btn" href="#audit" data-nav="audit">Free audit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ SERVICES ============ -->
+<div class="page" id="page-services">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><b>PXLD MEDIA</b><span>/</span><span>Event marketing agency</span></div>
+      <h1>Your event is three weeks out and the ticket link is quiet. <em>That is a build problem, not a budget problem.</em></h1>
+      <p class="lede"><strong>We run paid social for promoters, venues and festivals, built to sell tickets rather than collect clicks.</strong> One campaign build per event, tracking checked before a dollar is spent, and a single number reported back: cost per ticket.</p>
+      <div class="actions">
+        <a class="btn" href="#audit">Get a free campaign audit <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#work">See the results</a>
+      </div>
+      <div class="hero-meta" data-totals><div><div class="kpi">$318K</div><div class="kpi-label">Ticket revenue from sales builds</div></div><div><div class="kpi">10,300+</div><div class="kpi-label">Orders tracked to ads</div></div><div><div class="kpi win">3.58x</div><div class="kpi-label">ROAS on sales builds</div></div><div><div class="kpi">$8.57</div><div class="kpi-label">Average cost per order</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow"><b>01</b><span>Sound familiar</span></div><h2>What promoters tell us <em>before they call.</em></h2></div>
+        <p class="lede">Every one of these has a fix, and every fix is something we measure in the account, not something we promise on a call.</p>
+      </div>
+      <div class="pains">
+        <div class="pain"><q>"I boost posts and get likes, not ticket sales."</q><p>Boosts and traffic campaigns find people who tap. We build for people who buy.</p></div>
+        <div class="pain"><q>"The budget is gone before the final week."</q><p>Flat daily budgets spend evenly while most tickets sell in the last 72 hours. We ramp toward the date.</p></div>
+        <div class="pain"><q>"I can't tell which ad actually sold tickets."</q><p>The pixel is on the wrong page or missing from checkout. We fix tracking before launch.</p></div>
+        <div class="pain"><q>"Cold audiences cost a fortune."</q><p>Your likeliest buyers already follow you or bought last time. We sell to them first.</p></div>
+        <div class="pain"><q>"Free RSVP nights make the ads look like they're failing."</q><p>A $0 purchase wrecks ROAS when the room is full. We judge each event on the right number.</p></div>
+        <div class="pain"><q>"The creative feels tired by week two."</q><p>We plan announce, push and last-call creative so the feed never sees the same flyer twice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow"><b>02</b><span>Services</span></div><h2>Everything between the flyer <em>and a sold-out room.</em></h2></div>
+        <p class="lede">Hire us for one event or run your whole calendar through us. Every engagement starts with the free audit.</p>
+      </div>
+      <div class="services">
+        <article class="svc feature">
+          <div class="num">01 · CORE</div>
+          <h3>Ticket-sales <em>campaign builds</em></h3>
+          <p>Full paid-social builds on Meta and Instagram, optimised for purchases on your ticketing checkout, paced to your event date.</p>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>Purchase-optimised sales campaigns, never boosts</li>
+            <li><svg><use href="#i-check"/></svg>Warm, lookalike and cold audiences kept from competing</li>
+            <li><svg><use href="#i-check"/></svg>Lifetime budgets that ramp into the final week</li>
+            <li><svg><use href="#i-check"/></svg>Daily checks, weekly cost-per-ticket report</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <div class="num">02</div>
+          <h3>Tracking and <em>pixel setup</em></h3>
+          <p>If the ads can't see a sale, they can't find more buyers. We make sure every ticket is counted.</p>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>Pixel and Conversions API on the live checkout</li>
+            <li><svg><use href="#i-check"/></svg>Posh, Eventbrite, Ticketmaster and Gather checks</li>
+            <li><svg><use href="#i-check"/></svg>UTMs on every link, one source of truth</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <div class="num">03</div>
+          <h3>Ad creative <em>and copy</em></h3>
+          <p>Scroll-stopping statics, flyer animations and short-form video, written in the voice your crowd already responds to.</p>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>Announce, push and last-call creative sets</li>
+            <li><svg><use href="#i-check"/></svg>Animated flyers and Reels cut-downs</li>
+            <li><svg><use href="#i-check"/></svg>Hooks and headlines tested, losers cut fast</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <div class="num">04</div>
+          <h3>Audiences, email <em>and SMS</em></h3>
+          <p>Your past buyers are your cheapest tickets. We turn them into audiences, lists and repeat attendance.</p>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>Custom audiences from buyers, engagers and viewers</li>
+            <li><svg><use href="#i-check"/></svg>Email and SMS drops timed to on-sale and last call</li>
+            <li><svg><use href="#i-check"/></svg>List health and deliverability audits</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow"><b>03</b><span>Who we work with</span></div><h2>Built for people <em>who sell rooms.</em></h2></div>
+      </div>
+      <div class="who">
+        <div><h4>Promoters and collectives</h4><p>Weekly residencies, one-off headline shows, day parties, boat parties and watch parties.</p></div>
+        <div><h4>Venues and restaurants</h4><p>Multi-date calendars where budget has to be paced across events and last week's crowd is next week's warm audience.</p></div>
+        <div><h4>Festivals and tours</h4><p>Multi-day and multi-city runs with geo checks on every build so the ads match the flyer.</p></div>
+      </div>
+      <div style="margin-top:48px" class="eyebrow"><span>Platforms and ticketing</span></div>
+      <div class="stack">
+        <span class="chip-static">Meta</span><span class="chip-static">Instagram</span><span class="chip-static">TikTok</span><span class="chip-static">Google Search</span><span class="chip-static">Posh</span><span class="chip-static">Eventbrite</span><span class="chip-static">Ticketmaster</span><span class="chip-static">Gather</span><span class="chip-static">Mailchimp</span><span class="chip-static">Klaviyo</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div><div class="eyebrow"><b>FREE</b><span>Campaign audit</span></div><h2 style="margin-top:20px">Find out where your ticket sales <em>are leaking.</em></h2></div>
+      <div><p>Send us your next event and your ad account. We come back with what's broken, what to fix first and what it's costing you. No charge, no obligation.</p><a class="btn" href="#audit">Request your audit <svg><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ APPROACH ============ -->
+<div class="page" id="page-approach">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><b>APPROACH</b><span>/</span><span>How we build</span></div>
+      <h1>Same brands, same creative, same cities. <em>The difference is the build.</em></h1>
+      <p class="lede"><strong>Campaigns built to find ticket buyers sell tickets. Campaigns built to get clicks get clicks.</strong> Here is the exact process every event goes through, from the audit to the last-call push.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <div><h3>Audit</h3><div class="when">Before any spend</div></div>
+          <p><strong>We check the plumbing first.</strong> Pixel on the live checkout, the right ID in the right place, parallel campaigns bidding against each other, and where last event's budget actually went.</p>
+          <div class="proof"><div class="kpi">0.90x → 4.63x</div><small>A failing campaign rebuilt on the sales structure, turned around inside 9 days.</small></div>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <div><h3>Build</h3><div class="when">Announce week</div></div>
+          <p><strong>One build per event, split by objective on purpose.</strong> A purchase-optimised sales campaign carries the budget. Warm audiences of engagers, viewers and past buyers go first, with warm excluded from cold so the sets never compete.</p>
+          <div class="proof"><div class="kpi">8.77x vs 2.54x</div><small>Same event, same ticket page: purchase-optimised build vs traffic build.</small></div>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <div><h3>Pace</h3><div class="when">On-sale to event day</div></div>
+          <p><strong>Budget ramps toward the date and stops on it.</strong> Lifetime budgets tied to the event, reach front-loaded to build the warm pool, sales spend concentrated in the final 72 hours when most tickets move.</p>
+          <div class="proof"><div class="kpi">7.31x</div><small>Event-day return on one account, against 1.88x at 8 to 14 days out.</small></div>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <div><h3>Optimise</h3><div class="when">Daily</div></div>
+          <p><strong>Judged on cost per ticket, never CTR.</strong> Creative rotated before it fatigues, weak ad sets cut, spend moved to what's selling. Free-entry nights are judged on cost per RSVP so the report reflects the real goal.</p>
+          <div class="proof"><div class="kpi">$1.86</div><small>Cost per RSVP on a free-entry night, 322 sign-ups, judged on the right KPI.</small></div>
+        </div>
+        <div class="step">
+          <div class="n">05</div>
+          <div><h3>Report and repeat</h3><div class="when">After the event</div></div>
+          <p><strong>A one-page report and a playbook for the next one.</strong> Tickets, revenue, cost per ticket and which creative won. Every buyer becomes next event's warm audience, so each event starts cheaper than the last.</p>
+          <div class="proof"><div class="kpi">2x to 3.5x</div><small>How much cheaper warm audiences of past buyers convert than cold ones.</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow"><b>RULES</b><span>What we stopped doing</span></div><h2>Four habits that quietly <em>burn ticket budgets.</em></h2></div>
+      </div>
+      <div class="rules">
+        <div class="rule"><div class="bad">Boosting posts</div><div class="good">Sales campaigns on the checkout</div><p>Boosts optimise for engagement. Meta then finds people who like things, not people who buy tickets.</p></div>
+        <div class="rule"><div class="bad">Flat daily budgets</div><div class="good">Lifetime budgets that ramp</div><p>Even spend means the campaign is starved exactly when buyers are ready to commit.</p></div>
+        <div class="rule"><div class="bad">Cold audiences first</div><div class="good">Warm stacks first</div><p>Your followers and past buyers convert at a fraction of the cost. Cold scales what warm proves.</p></div>
+        <div class="rule"><div class="bad">Reporting on clicks</div><div class="good">One number: cost per ticket</div><p>Cheap clicks with an empty guest list is not a result. We report what the room cares about.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div><div class="eyebrow"><b>STEP 01</b><span>Starts free</span></div><h2 style="margin-top:20px">Every engagement starts <em>with the audit.</em></h2></div>
+      <div><p>About 90 seconds to request. We review your account and your next event, then send back a prioritised fix list.</p><a class="btn" href="#audit">Request your audit <svg><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ WORK ============ -->
+<div class="page" id="page-work">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><b>WORK</b><span>/</span><span>Selected results</span></div>
+      <h1>Real campaigns, <em>real ticket counts.</em></h1>
+      <p class="lede"><strong>Every figure below is pulled from live ad accounts with purchase attribution.</strong> Client, venue and event names are withheld. The numbers are not.</p>
+      <div class="totals" style="margin-top:56px"><div><div class="kpi">$88.9K</div><div class="kpi-label">Spend on sales builds</div></div><div><div class="kpi">$318K</div><div class="kpi-label">Ticket revenue tracked</div></div><div><div class="kpi">10,300+</div><div class="kpi-label">Orders</div></div><div><div class="kpi win">3.58x</div><div class="kpi-label">ROAS</div></div></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;border-top:0">
+    <div class="wrap">
+      <div class="filters chips" role="group" aria-label="Filter case studies">
+        <label class="chip"><input type="radio" name="wf" value="all" checked><span>All events</span></label>
+        <label class="chip"><input type="radio" name="wf" value="nightlife"><span>Nightlife and residencies</span></label>
+        <label class="chip"><input type="radio" name="wf" value="festival"><span>Festivals and day parties</span></label>
+        <label class="chip"><input type="radio" name="wf" value="free"><span>Free-entry and RSVP</span></label>
+        <label class="chip"><input type="radio" name="wf" value="venue"><span>Venues</span></label>
+      </div>
+      <div class="cases">
+        <article class="case lead" data-tags="nightlife"><div class="case-head"><span>Featured · Concept night · Boston</span><span>2025</span></div><div class="case-body"><div><h3>A brand-new night with <em>no audience history.</em></h3><p style="margin-top:14px"><b>The challenge:</b> launch an Afrobeats x amapiano concept with no past buyers to retarget. <b>The build:</b> purchase optimisation from day one on a genre-matched interest stack, budget held back for the final week. <b>The result:</b> the most efficient campaign in the account's history.</p></div><div><div class="big">35.6x</div><p style="margin-top:12px"><b>Return on the launch campaign.</b> Every $1 of ad spend returned $35.60 in ticket revenue, per Meta's own purchase ROAS.</p></div><div class="case-kpis"><div><div class="kpi">$1,109</div><div class="kpi-label">Ad spend</div></div><div><div class="kpi">$15,399</div><div class="kpi-label">Ticket revenue</div></div><div><div class="kpi">344</div><div class="kpi-label">Orders</div></div><div><div class="kpi">13.9x</div><div class="kpi-label">Event ROAS</div></div></div></div></article>
+        <article class="case" data-tags="nightlife"><div class="case-head"><span>Party series · Boston</span><span>2025 to 2026</span></div><div class="case-body"><h3>Recurring Caribbean <em>party series</em></h3><p>Seventeen themed editions that each had to sell without wearing out the same crowd. A sales-first build per edition with a themed hook and a back-loaded budget. <b>The flag-pride edition returned 14.7x.</b></p><div class="case-kpis"><div><div class="kpi">$14.1K</div><div class="kpi-label">Spend</div></div><div><div class="kpi">$48.2K</div><div class="kpi-label">Revenue</div></div><div><div class="kpi">1,106</div><div class="kpi-label">Orders</div></div><div><div class="kpi">3.42x</div><div class="kpi-label">ROAS</div></div></div></div></article>
+        <article class="case" data-tags="nightlife"><div class="case-head"><span>Franchise · Boston</span><span>2025 to 2026</span></div><div class="case-body"><h3>Haitian-diaspora <em>party franchise</em></h3><p>A franchise returning every few months. Warm retargeting from past editions plus a culture-led interest stack held cost per order near $10 across $10K of spend. <b>The spring edition returned 15.5x.</b></p><div class="case-kpis"><div><div class="kpi">$10.3K</div><div class="kpi-label">Spend</div></div><div><div class="kpi">$39.9K</div><div class="kpi-label">Revenue</div></div><div><div class="kpi">944</div><div class="kpi-label">Orders</div></div><div><div class="kpi">3.88x</div><div class="kpi-label">ROAS</div></div></div></div></article>
+        <article class="case" data-tags="nightlife"><div class="case-head"><span>Party series · Boston</span><span>2025 to 2026</span></div><div class="case-body"><h3>Black-culture <em>celebration series</em></h3><p>Scaling a party from a test to a full flight. A $312 cold sales test returned 7.4x and proved the concept, <b>then a $3.5K Juneteenth-week flight sold 360 orders at 4.45x.</b></p><div class="case-kpis"><div><div class="kpi">$11.0K</div><div class="kpi-label">Spend</div></div><div><div class="kpi">$37.5K</div><div class="kpi-label">Revenue</div></div><div><div class="kpi">962</div><div class="kpi-label">Orders</div></div><div><div class="kpi">3.40x</div><div class="kpi-label">ROAS</div></div></div></div></article>
+        <article class="case" data-tags="festival"><div class="case-head"><span>Seasonal series · Boston</span><span>2024 to 2026</span></div><div class="case-body"><h3>Summer <em>day-party series</em></h3><p>An outdoor-season series judged on repeat attendance. Each summer's buyers became the next edition's warm audience, so later editions launched cheaper. <b>The August 2026 edition returned 6.97x.</b></p><div class="case-kpis"><div><div class="kpi">$5.8K</div><div class="kpi-label">Spend</div></div><div><div class="kpi">$20.6K</div><div class="kpi-label">Revenue</div></div><div><div class="kpi">443</div><div class="kpi-label">Orders</div></div><div><div class="kpi">3.56x</div><div class="kpi-label">ROAS</div></div></div></div></article>
+        <article class="case" data-tags="festival"><div class="case-head"><span>Annual fete · Boston</span><span>2026</span></div><div class="case-body"><h3>Carnival-week <em>soca fete</em></h3><p>The account had run traffic campaigns for two years. We switched the flagship event to a purchase-optimised build and kept a small traffic campaign alongside as a control. <b>Same event, same page: sales build 8.77x, traffic build 2.54x.</b></p><div class="case-kpis"><div><div class="kpi">$1,114</div><div class="kpi-label">Spend</div></div><div><div class="kpi">$7,967</div><div class="kpi-label">Revenue</div></div><div><div class="kpi">118</div><div class="kpi-label">Orders</div></div><div><div class="kpi">7.15x</div><div class="kpi-label">ROAS</div></div></div></div></article>
+        <article class="case" data-tags="festival"><div class="case-head"><span>Topical series · Boston</span><span>2026</span></div><div class="case-body"><h3>Football tournament <em>watch parties</em></h3><p>Fast-turnaround events with days between fixture confirmation and kick-off. Campaigns went live within days of each fixture, targeted to the diaspora supporting the team. <b>The strongest single match returned 9.1x.</b></p><div class="case-kpis"><div><div class="kpi">$2,330</div><div class="kpi-label">Spend</div></div><div><div class="kpi">$12,142</div><div class="kpi-label">Revenue</div></div><div><div class="kpi">362</div><div class="kpi-label">Orders</div></div><div><div class="kpi">5.21x</div><div class="kpi-label">ROAS</div></div></div></div></article>
+        <article class="case" data-tags="free"><div class="case-head"><span>Free entry · Boston</span><span>2026</span></div><div class="case-body"><h3>Latin summer <em>costume party</em></h3><p>A free-entry night where ROAS would have looked like failure while the room filled. Judged on the right number instead: cost per RSVP. <b>322 sign-ups at $1.86 each.</b></p><div class="case-kpis"><div><div class="kpi">$598</div><div class="kpi-label">Spend</div></div><div><div class="kpi">322</div><div class="kpi-label">RSVPs</div></div><div><div class="kpi">$1.86</div><div class="kpi-label">Per RSVP</div></div><div><div class="kpi">1 wk</div><div class="kpi-label">Flight</div></div></div></div></article>
+        <article class="case" data-tags="venue"><div class="case-head"><span>Restaurant lounge · Providence</span><span>2026</span></div><div class="case-body"><h3>Venue <em>DJ night</em></h3><p>A restaurant and lounge building an events calendar alongside reservations. A five-day ticketed flight with warm audiences from venue guests. <b>Warm buyers came in at $4.88 each.</b></p><div class="case-kpis"><div><div class="kpi">$195</div><div class="kpi-label">Spend</div></div><div><div class="kpi">33</div><div class="kpi-label">Tickets</div></div><div><div class="kpi">$5.90</div><div class="kpi-label">Per ticket</div></div><div><div class="kpi">5 days</div><div class="kpi-label">Flight</div></div></div></div></article>
+      </div>
+      <p class="note">Figures are Meta-reported pixel purchases and purchase value, Aug 2023 to Sep 2026. An order can hold several tickets, so ticket counts are at least the order count. Free-entry events are judged on cost per RSVP. Client, promoter, venue and event names are withheld.</p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div><div class="eyebrow"><b>NEXT</b><span>Your event</span></div><h2 style="margin-top:20px">Want numbers like these <em>on your next event?</em></h2></div>
+      <div><p>Tell us what's coming up. The audit shows exactly what we'd change and what it should do to your cost per ticket.</p><a class="btn" href="#audit">Get your free audit <svg><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ AUDIT ============ -->
+<div class="page" id="page-audit">
+  <section class="hero">
+    <div class="wrap audit">
+      <div class="audit-intro">
+        <div class="eyebrow"><b>04</b><span>Request your audit</span></div>
+        <h1>Tell us about <em>your events.</em></h1>
+        <p class="lede">About 90 seconds. Specific answers make the audit specific to your account.</p>
+        <div class="gets">
+          <div><span>01</span>Tracking check: is every ticket sale actually reaching your ad account</div>
+          <div><span>02</span>Where your last event's budget went, and what it returned</div>
+          <div><span>03</span>A prioritised fix list for your next on-sale</div>
+          <div><span>04</span>Delivered within 3 business days. Free, no obligation</div>
+        </div>
+      </div>
+
+      <div>
+        <form class="audit-form" id="auditForm" name="audit" method="POST" data-netlify="true" netlify-honeypot="company_url" novalidate>
+          <input type="hidden" name="form-name" value="audit">
+          <p hidden><label>Leave this empty <input name="company_url"></label></p>
+          <div class="field">
+            <label for="f-name">Name <span class="req">*</span></label>
+            <input id="f-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-brand">Brand, festival or venue <span class="req">*</span></label>
+            <input id="f-brand" name="brand" type="text" placeholder="Who are we auditing?" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Work email <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" placeholder="you@brand.com" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-site">Website or Instagram</label>
+            <input id="f-site" name="website" type="text" placeholder="https:// or @handle">
+          </div>
+
+          <div class="field full">
+            <span class="lbl" id="l-role">Your role <span class="req">*</span></span>
+            <div class="chips" role="radiogroup" aria-labelledby="l-role" data-required="role">
+              <label class="chip"><input type="radio" name="role" value="Festival organiser"><span>Festival organiser</span></label>
+              <label class="chip"><input type="radio" name="role" value="Club / event promoter"><span>Club / event promoter</span></label>
+              <label class="chip"><input type="radio" name="role" value="Venue operator"><span>Venue operator</span></label>
+              <label class="chip"><input type="radio" name="role" value="Tour / series promoter"><span>Tour / series promoter</span></label>
+              <label class="chip"><input type="radio" name="role" value="Agency / marketing lead"><span>Agency / marketing lead</span></label>
+              <label class="chip"><input type="radio" name="role" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="lbl" id="l-tix">Tickets sold per year <span class="req">*</span></span>
+            <div class="chips" role="radiogroup" aria-labelledby="l-tix" data-required="tickets">
+              <label class="chip"><input type="radio" name="tickets" value="< 5,000"><span>&lt; 5,000</span></label>
+              <label class="chip"><input type="radio" name="tickets" value="5,000 to 10,000"><span>5,000 to 10,000</span></label>
+              <label class="chip"><input type="radio" name="tickets" value="10,000 to 25,000"><span>10,000 to 25,000</span></label>
+              <label class="chip"><input type="radio" name="tickets" value="25,000 to 50,000"><span>25,000 to 50,000</span></label>
+              <label class="chip"><input type="radio" name="tickets" value="50,000+"><span>50,000+</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="lbl" id="l-spend">Monthly ad spend <span class="req">*</span></span>
+            <div class="chips" role="radiogroup" aria-labelledby="l-spend" data-required="spend">
+              <label class="chip"><input type="radio" name="spend" value="< $2k / mo"><span>&lt; $2k / mo</span></label>
+              <label class="chip"><input type="radio" name="spend" value="$2k to $5k / mo"><span>$2k to $5k / mo</span></label>
+              <label class="chip"><input type="radio" name="spend" value="$5k to $15k / mo"><span>$5k to $15k / mo</span></label>
+              <label class="chip"><input type="radio" name="spend" value="$15k to $50k / mo"><span>$15k to $50k / mo</span></label>
+              <label class="chip"><input type="radio" name="spend" value="$50k+ / mo"><span>$50k+ / mo</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="lbl" id="l-plat">Platforms you run</span>
+            <div class="chips" role="group" aria-labelledby="l-plat">
+              <label class="chip"><input type="checkbox" name="platforms" value="Meta"><span>Meta</span></label>
+              <label class="chip"><input type="checkbox" name="platforms" value="Google"><span>Google</span></label>
+              <label class="chip"><input type="checkbox" name="platforms" value="TikTok"><span>TikTok</span></label>
+              <label class="chip"><input type="checkbox" name="platforms" value="Email / SMS"><span>Email / SMS</span></label>
+              <label class="chip"><input type="checkbox" name="platforms" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="lbl" id="l-next">Next campaign</span>
+            <div class="chips" role="radiogroup" aria-labelledby="l-next">
+              <label class="chip"><input type="radio" name="next" value="On sale now"><span>On sale now</span></label>
+              <label class="chip"><input type="radio" name="next" value="Next 30 days"><span>Next 30 days</span></label>
+              <label class="chip"><input type="radio" name="next" value="Next 90 days"><span>Next 90 days</span></label>
+              <label class="chip"><input type="radio" name="next" value="2027 planning"><span>2027 planning</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="lbl" id="l-tkt">Ticketing platform</span>
+            <div class="chips" role="radiogroup" aria-labelledby="l-tkt">
+              <label class="chip"><input type="radio" name="ticketing" value="Posh"><span>Posh</span></label>
+              <label class="chip"><input type="radio" name="ticketing" value="Eventbrite"><span>Eventbrite</span></label>
+              <label class="chip"><input type="radio" name="ticketing" value="Ticketmaster"><span>Ticketmaster</span></label>
+              <label class="chip"><input type="radio" name="ticketing" value="DICE"><span>DICE</span></label>
+              <label class="chip"><input type="radio" name="ticketing" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="lbl" id="l-px">Is your pixel on the checkout?</span>
+            <div class="chips" role="radiogroup" aria-labelledby="l-px">
+              <label class="chip"><input type="radio" name="pixel" value="Yes, tracking purchases"><span>Yes, tracking purchases</span></label>
+              <label class="chip"><input type="radio" name="pixel" value="Installed, not sure it works"><span>Installed, not sure</span></label>
+              <label class="chip"><input type="radio" name="pixel" value="No / don't know"><span>No / don't know</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <span class="lbl" id="l-look">What are you looking for?</span>
+            <div class="options" role="radiogroup" aria-labelledby="l-look">
+              <label class="opt"><input type="radio" name="looking" value="Just the audit"><span>Just the audit: I will implement the recommendations myself</span></label>
+              <label class="opt"><input type="radio" name="looking" value="Open to a conversation"><span>Open to a conversation if the right support is available</span></label>
+              <label class="opt"><input type="radio" name="looking" value="Looking for an agency"><span>Actively looking for an agency to take over our marketing</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="f-under">Where is marketing underperforming? <span class="req">*</span></label>
+            <textarea id="f-under" name="underperforming" placeholder="e.g. ads get clicks but few ticket sales, pre-reg never converts, creative feels tired..." required></textarea>
+          </div>
+
+          <p class="form-error" id="formError" role="alert" hidden></p>
+          <div class="submit-row">
+            <button class="btn" type="submit">Request my free audit <svg><use href="#i-arrow"/></svg></button>
+            <small>We reply within 3 business days. Your answers are only used to prepare your audit.</small>
+          </div>
+        </form>
+
+        <div class="thanks" id="thanks" hidden>
+          <div class="eyebrow"><b>RECEIVED</b></div>
+          <h2 style="margin-top:18px">Thanks. <em>Your audit is in the queue.</em></h2>
+          <p>We'll review your account and your next event, then email your fix list within 3 business days. If your event is on sale now, reply to our email with the ticket link and we'll prioritise it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>PXLD MEDIA · Event marketing</span>
+    <nav><a href="#services">Services</a><a href="#approach">Approach</a><a href="#work">Work</a><a href="#audit">Free audit</a><a href="mailto:info@pxldmedia.com">info@pxldmedia.com</a></nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var pages=['services','approach','work','audit'];
+  var nav=document.querySelector('nav.main'), toggle=document.querySelector('.menu-toggle');
+  function show(){
+    var id=(location.hash||'#services').slice(1); if(pages.indexOf(id)<0) id='services';
+    pages.forEach(function(p){document.getElementById('page-'+p).classList.toggle('on',p===id)});
+    document.querySelectorAll('[data-nav]').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-nav')===id)});
+    nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',show); show();
+  toggle.addEventListener('click',function(){var o=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',o?'true':'false')});
+
+  document.querySelectorAll('input[name=wf]').forEach(function(r){
+    r.addEventListener('change',function(){
+      document.querySelectorAll('.case').forEach(function(c){
+        c.hidden = !(r.value==='all' || (c.getAttribute('data-tags')||'').split(' ').indexOf(r.value)>=0);
+      });
+    });
+  });
+
+  var form=document.getElementById('auditForm'), err=document.getElementById('formError');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var missing=[];
+    form.querySelectorAll('[required]').forEach(function(el){ if(!el.value.trim()) missing.push(el); });
+    var email=form.querySelector('#f-email');
+    if(email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) missing.push(email);
+    form.querySelectorAll('[data-required]').forEach(function(g){ if(!form.querySelector('input[name="'+g.getAttribute('data-required')+'"]:checked')) missing.push(g); });
+    if(missing.length){ err.textContent='Please complete the required fields marked *.'; err.hidden=false; (missing[0].focus?missing[0]:missing[0].querySelector('input')).focus(); return; }
+    err.hidden=true;
+    var btn=form.querySelector('button[type=submit]'); btn.disabled=true;
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); form.hidden=true; document.getElementById('thanks').hidden=false; window.scrollTo(0,0); })
+      .catch(function(){
+        btn.disabled=false;
+        var lines=[]; new FormData(form).forEach(function(v,k){ if(k!=='form-name'&&k!=='company_url'&&v) lines.push(k+': '+v); });
+        location.href='mailto:info@pxldmedia.com?subject='+encodeURIComponent('Free audit request: '+(form.brand.value||form.name.value))+'&body='+encodeURIComponent(lines.join('\n'));
+        err.textContent='Your email app should open with your answers filled in. Press send and we will take it from there.'; err.hidden=false;
+      });
+  });
+})();
+</script>
+</body>
+</html>
