@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /pxld-agency-site/thanks/
+Sitemap: https://pxldmeida.github.io/pxld-agency-site/sitemap.xml
