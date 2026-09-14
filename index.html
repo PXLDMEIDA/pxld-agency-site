@@ -37,6 +37,21 @@ img{max-width:100%;display:block}
     radial-gradient(900px 600px at 0% 100%, rgba(0,95,115,.10), transparent 60%),
     linear-gradient(180deg,var(--mint),var(--mint-2));}
 .dark a{color:var(--spark)} .light a{color:var(--teal)}
+section.dark{position:relative;isolation:isolate;overflow:hidden}
+section.dark::before{content:"";position:absolute;inset:-25%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38% 34% at 22% 30%, rgba(10,122,136,.42), transparent 70%),
+    radial-gradient(32% 30% at 78% 72%, rgba(255,216,79,.11), transparent 70%),
+    radial-gradient(30% 28% at 62% 18%, rgba(0,95,115,.36), transparent 70%);
+  filter:blur(8px);animation:drift 18s ease-in-out infinite alternate}
+section.dark::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,50%), rgba(255,216,79,.10), rgba(10,122,136,.10) 35%, transparent 65%)}
+section.dark.lit::after{opacity:1}
+@keyframes drift{
+  0%{transform:translate3d(-6%,-4%,0) rotate(0deg) scale(1)}
+  50%{transform:translate3d(6%,5%,0) rotate(8deg) scale(1.1)}
+  100%{transform:translate3d(-3%,7%,0) rotate(-6deg) scale(1.04)}}
+@media (prefers-reduced-motion:reduce){section.dark::before{animation:none}section.dark::after{display:none}}
 
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;gap:12px;align-items:center}
 .eyebrow b{color:var(--accent);font-weight:500}
@@ -145,13 +160,25 @@ section{padding-block:clamp(72px,10vw,136px)}
 .svc ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
 .svc li{display:flex;gap:10px;font-size:15.5px}
 .svc li svg{flex:none;width:18px;height:18px;margin-top:3px;color:var(--spark)}
-@media (max-width:860px){.services{grid-template-columns:1fr}}
+.svc:nth-child(2),.svc:nth-child(3){background:linear-gradient(180deg,var(--mint),var(--mint-2));color:#0f3434}
+.svc:nth-child(2) p,.svc:nth-child(3) p{color:#56756f}
+.svc:nth-child(2) .n,.svc:nth-child(3) .n,.svc:nth-child(2) li svg,.svc:nth-child(3) li svg{color:var(--teal)}
+@media (max-width:860px){
+  .services{grid-template-columns:1fr}
+  .svc:nth-child(3){background:linear-gradient(180deg,rgba(10,46,47,.96),rgba(6,32,31,.96));color:var(--mint)}
+  .svc:nth-child(3) p{color:#9dbcb4}
+  .svc:nth-child(3) .n,.svc:nth-child(3) li svg{color:var(--spark)}
+  .svc:nth-child(4){background:linear-gradient(180deg,var(--mint),var(--mint-2));color:#0f3434}
+  .svc:nth-child(4) p{color:#56756f}
+  .svc:nth-child(4) .n,.svc:nth-child(4) li svg{color:var(--teal)}
+}
 
-.who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .who > div{padding:32px;border-radius:4px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
-.who h3{font-size:34px}
+.who h3{font-size:30px}
 .who p{margin:10px 0 0;color:var(--muted)}
-@media (max-width:760px){.who{grid-template-columns:1fr}}
+@media (max-width:1100px){.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.who{grid-template-columns:1fr}}
 .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .pill{font-size:15px;padding:9px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line-strong)}
 
@@ -369,10 +396,12 @@ footer.site nav{display:flex;gap:22px;flex-wrap:wrap}
 
   <section class="light">
     <div class="wrap">
-      <div class="head"><div><div class="eyebrow"><b>03</b><span>Who we work with</span></div><h2>Built for people <em>who sell rooms.</em></h2></div></div>
+      <div class="head"><div><div class="eyebrow"><b>03</b><span>Who we work with</span></div><h2>Built for anyone <em>selling tickets.</em></h2></div></div>
       <div class="who">
         <div><h3>Promoters &amp; collectives</h3><p>Residencies, one-offs, day parties and boat parties.</p></div>
         <div><h3>Venues</h3><p>Clubs, lounges and restaurants with a full calendar to fill.</p></div>
+        <div><h3>Festivals &amp; food events</h3><p>Festivals, food fairs, tastings and markets.</p></div>
+        <div><h3>Anyone selling tickets</h3><p>Comedy, brunches, concerts, cultural and community events.</p></div>
       </div>
       <div class="eyebrow" style="margin-top:48px">Platforms</div>
       <div class="stack">
@@ -589,6 +618,20 @@ footer.site nav{display:flex;gap:22px;flex-wrap:wrap}
     if(location.hash==='#cases'){ document.getElementById('cases').scrollIntoView(); } else { window.scrollTo(0,0); }
   }
   window.addEventListener('hashchange',show); show();
+
+  var raf=0, last=null;
+  document.addEventListener('pointermove',function(e){
+    last=e; if(raf) return;
+    raf=requestAnimationFrame(function(){
+      raf=0; var sec=last.target.closest && last.target.closest('section.dark');
+      document.querySelectorAll('section.dark.lit').forEach(function(s){ if(s!==sec) s.classList.remove('lit'); });
+      if(!sec) return;
+      var r=sec.getBoundingClientRect();
+      sec.style.setProperty('--mx',(last.clientX-r.left)+'px'); sec.style.setProperty('--my',(last.clientY-r.top)+'px');
+      sec.classList.add('lit');
+    });
+  },{passive:true});
+  document.addEventListener('pointerleave',function(){ document.querySelectorAll('section.dark.lit').forEach(function(s){ s.classList.remove('lit'); }); });
   toggle.addEventListener('click',function(){var o=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',o?'true':'false')});
 
   document.querySelectorAll('input[name=wf]').forEach(function(r){
